@@ -101,6 +101,11 @@ MASVS is the source standard; the checks below are the iOS-specific version of i
 **How:** Static: review `scene(_:openURLContexts:)` and scheme handlers.
 **If failed:** Medium. Any app or website can fire your URL scheme.
 
+### AUTH-5 - Auth endpoints resist brute force
+**Verify:** Login, OTP, and password-reset endpoints throttle or lock out after repeated failures.
+**How:** Dynamic: send repeated bad logins through Burp and watch for throttling, CAPTCHA, or temporary lockout.
+**If failed:** Medium. Unhindered guessing turns any weak password or short OTP into an entry point.
+
 ---
 
 ## MASVS-NETWORK — Network Communication
