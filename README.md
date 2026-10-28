@@ -130,6 +130,11 @@ MASVS is the source standard; the checks below are the iOS-specific version of i
 **How:** Dynamic: replay requests without the Authorization header; fuzz for hidden endpoints.
 **If failed:** High. Client-side checks are not access control.
 
+### NETWORK-5 - Sensitive responses are not cached
+**Verify:** API responses holding tokens, PII, or account data are not stored in the shared URL cache, and the backend sends cache controls that keep them out of intermediary caches.
+**How:** Static: check for `URLCache` use and any custom caching of responses. Dynamic: exercise the sensitive endpoints through Burp, then inspect the app cache on the test device and the `Cache-Control` headers in the responses.
+**If failed:** Medium. A cached response can hand sensitive data to anyone who later gets the device or a backup of it.
+
 ---
 
 ## MASVS-PLATFORM — Platform Interaction
