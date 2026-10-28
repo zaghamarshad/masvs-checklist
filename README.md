@@ -154,6 +154,11 @@ MASVS is the source standard; the checks below are the iOS-specific version of i
 **How:** Static: review entitlements and app group containers.
 **If failed:** Medium. Over-sharing widens every other finding.
 
+### PLATFORM-4 — Notifications do not show sensitive content
+**Verify:** Push and local notifications do not include one-time codes, tokens, or private message bodies on the lock screen.
+**How:** Static: review notification payload handling and what the app puts in the notification title and body. Dynamic: trigger a notification for a sensitive event with the device locked and read what is visible without unlocking.
+**If failed:** Low to Medium. Anyone holding the phone can read what the notification carries, with no need to open the app.
+
 ---
 
 ## MASVS-CODE — Code Quality
