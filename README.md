@@ -159,6 +159,11 @@ MASVS is the source standard; the checks below are the iOS-specific version of i
 **How:** Static: review notification payload handling and what the app puts in the notification title and body. Dynamic: trigger a notification for a sensitive event with the device locked and read what is visible without unlocking.
 **If failed:** Low to Medium. Anyone holding the phone can read what the notification carries, with no need to open the app.
 
+### PLATFORM-5 - Links open only trusted destinations
+**Verify:** Universal links and deep links validate the host and path, and the app does not open an arbitrary URL passed in as a link parameter.
+**How:** Static: review the associated domains list and every handler that opens a URL from incoming link data. Dynamic: send the app a link with an unexpected host and a link that carries an unrelated URL as a parameter, and watch where it goes.
+**If failed:** Medium. A crafted link can send the user to a phishing page inside a flow they trust, or trigger screens that were meant to be reached only from inside the app.
+
 ---
 
 ## MASVS-CODE — Code Quality
