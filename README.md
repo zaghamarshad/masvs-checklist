@@ -211,6 +211,15 @@ These apply based on the threat model, not to every app. A consumer social app a
 
 ---
 
+## MASVS-PRIVACY — Privacy
+
+### PRIVACY-1 — Data collection matches the privacy disclosure
+**Verify:** The data the app and its third-party SDKs collect matches what the App Store privacy label and the app privacy page say, and tracking across other companies' apps or sites only starts after the App Tracking Transparency prompt is accepted.
+**How:** Static: list the analytics, ads, and crash reporting SDKs in the project and compare their data types against the privacy label. Dynamic: run the app fresh and note when the tracking prompt appears and what network calls happen before any choice is made.
+**If failed:** Medium. Undisclosed collection is an App Store rejection risk and a trust problem with users, even when no security flaw is involved.
+
+---
+
 ## Reference
 
 - OWASP MASVS v2 (the source standard for these categories)
