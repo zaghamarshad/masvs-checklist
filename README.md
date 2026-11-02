@@ -218,6 +218,11 @@ These apply based on the threat model, not to every app. A consumer social app a
 **How:** Static: list the analytics, ads, and crash reporting SDKs in the project and compare their data types against the privacy label. Dynamic: run the app fresh and note when the tracking prompt appears and what network calls happen before any choice is made.
 **If failed:** Medium. Undisclosed collection is an App Store rejection risk and a trust problem with users, even when no security flaw is involved.
 
+### PRIVACY-2 - Permission prompts match the feature in use
+**Verify:** Camera, photos, location, contacts, and microphone access are requested only when the user starts a feature that needs them, and each purpose string in Info.plist explains the use in plain words.
+**How:** Static: read the purpose strings in Info.plist. Dynamic: install fresh, walk each feature, and note when each prompt appears.
+**If failed:** Low to Medium. Early or vague prompts train users to grant access without a reason, and they are a common App Store review question.
+
 ---
 
 ## Reference
