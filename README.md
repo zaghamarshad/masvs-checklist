@@ -223,6 +223,11 @@ These apply based on the threat model, not to every app. A consumer social app a
 **How:** Static: read the purpose strings in Info.plist. Dynamic: install fresh, walk each feature, and note when each prompt appears.
 **If failed:** Low to Medium. Early or vague prompts train users to grant access without a reason, and they are a common App Store review question.
 
+### PRIVACY-3 - Deleting an account removes the user's data
+**Verify:** An in-app account deletion option exists where the app lets users create an account, and deletion removes or anonymizes the user's personal data on the server, not just the local copy on the phone.
+**How:** Static: review the account settings flow and the deletion request the app sends. Dynamic: create a test account, add data, delete the account, then try signing in again and check that the old data is not offered back when signing up again with the same email.
+**If failed:** Medium. Data kept after a deletion request breaks the privacy promise the app made, and account deletion in the app is an App Store requirement where accounts can be created there.
+
 ---
 
 ## Reference
