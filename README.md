@@ -228,6 +228,11 @@ These apply based on the threat model, not to every app. A consumer social app a
 **How:** Static: review the account settings flow and the deletion request the app sends. Dynamic: create a test account, add data, delete the account, then try signing in again and check that the old data is not offered back when signing up again with the same email.
 **If failed:** Medium. Data kept after a deletion request breaks the privacy promise the app made, and account deletion in the app is an App Store requirement where accounts can be created there.
 
+### PRIVACY-4 - Sensitive values do not sit in the clipboard
+**Verify:** Passwords, tokens, and one-time codes are not copied to the general clipboard by default, and any copy the app does offer is marked so it expires or stays local to the device where the platform allows it.
+**How:** Static: review pasteboard writes and the flags set on them. Dynamic: copy a sensitive value in the app, then paste into another app and check what arrives and how long it stays available.
+**If failed:** Low to Medium. The clipboard is shared space, so a secret left there can be read by other apps or pasted into the wrong place by mistake.
+
 ---
 
 ## Reference
