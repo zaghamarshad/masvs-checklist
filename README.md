@@ -233,6 +233,11 @@ These apply based on the threat model, not to every app. A consumer social app a
 **How:** Static: review pasteboard writes and the flags set on them. Dynamic: copy a sensitive value in the app, then paste into another app and check what arrives and how long it stays available.
 **If failed:** Low to Medium. The clipboard is shared space, so a secret left there can be read by other apps or pasted into the wrong place by mistake.
 
+### PRIVACY-5 - Crash and analytics reports carry no sensitive content
+**Verify:** Crash logs, analytics events, and error reports do not include tokens, passwords, full message bodies, or other personal content, and event names describe the action without copying user data into them.
+**How:** Static: review what the crash and analytics calls attach to each report. Dynamic: force a crash and trigger common events, then read the reports that were sent and check the fields line by line.
+**If failed:** Medium. Reports leave the device and sit in third party dashboards, so anything copied into them is stored outside the app controls.
+
 ---
 
 ## Reference
