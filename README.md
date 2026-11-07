@@ -238,6 +238,11 @@ These apply based on the threat model, not to every app. A consumer social app a
 **How:** Static: review what the crash and analytics calls attach to each report. Dynamic: force a crash and trigger common events, then read the reports that were sent and check the fields line by line.
 **If failed:** Medium. Reports leave the device and sit in third party dashboards, so anything copied into them is stored outside the app controls.
 
+### PRIVACY-6 - Exports and shares include only the user's own data
+**Verify:** A data export, share sheet action, or document share from the app includes only data that belongs to that user, and it does not attach debug logs, other users' content, or hidden metadata the user did not choose to share.
+**How:** Static: review what the export and share code gathers before sending. Dynamic: create data in two test accounts where the app allows it, export from one, and read the file line by line for anything from the other account or from the device.
+**If failed:** Medium. An export leaves the app under the user's name, so extra data in it is a disclosure the user caused without knowing.
+
 ---
 
 ## Reference
