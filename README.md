@@ -243,6 +243,11 @@ These apply based on the threat model, not to every app. A consumer social app a
 **How:** Static: review what the export and share code gathers before sending. Dynamic: create data in two test accounts where the app allows it, export from one, and read the file line by line for anything from the other account or from the device.
 **If failed:** Medium. An export leaves the app under the user's name, so extra data in it is a disclosure the user caused without knowing.
 
+### PRIVACY-7 - Location stays approximate unless precise is needed
+**Verify:** The app uses approximate location by default and asks for precise location only for a feature that cannot work without it, and it does not keep a location history beyond what that feature needs.
+**How:** Static: review the location calls and the accuracy level each one requests. Dynamic: grant approximate location only, walk each feature, and note which ones still work and which ones ask for more.
+**If failed:** Medium. Precise location and location history can show where a person lives and works, so collecting more than the feature needs is a privacy risk on its own.
+
 ---
 
 ## Reference
