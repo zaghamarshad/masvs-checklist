@@ -248,6 +248,11 @@ These apply based on the threat model, not to every app. A consumer social app a
 **How:** Static: review the location calls and the accuracy level each one requests. Dynamic: grant approximate location only, walk each feature, and note which ones still work and which ones ask for more.
 **If failed:** Medium. Precise location and location history can show where a person lives and works, so collecting more than the feature needs is a privacy risk on its own.
 
+### PRIVACY-8 - Photos and files stay limited to what the user picks
+**Verify:** The app asks for the limited photo picker or a document picker where it can, instead of full photo library or file access, unless a feature truly needs the wider access.
+**How:** Static: review the photo and file access calls and the permission each one requests. Dynamic: pick a single photo through the limited picker, walk each feature that uses photos or files, and note which ones still ask for full access.
+**If failed:** Low to Medium. Full library access exposes photos and files the user never meant to share with the app, when the feature only needed the one item they picked.
+
 ---
 
 ## Reference
