@@ -253,6 +253,11 @@ These apply based on the threat model, not to every app. A consumer social app a
 **How:** Static: review the photo and file access calls and the permission each one requests. Dynamic: pick a single photo through the limited picker, walk each feature that uses photos or files, and note which ones still ask for full access.
 **If failed:** Low to Medium. Full library access exposes photos and files the user never meant to share with the app, when the feature only needed the one item they picked.
 
+### PRIVACY-9 - Sensitive content is not indexed for system search
+**Verify:** Private messages, account details, and other sensitive content are not donated to Spotlight, Siri, or Shortcuts in a way that shows the content itself in search results or on the lock screen.
+**How:** Static: review Core Spotlight, NSUserActivity, and App Intents donations and what title and text each one carries. Dynamic: create sensitive content in the app, lock the device, then search for a word from that content from the home screen and check what is shown before unlocking.
+**If failed:** Low to Medium. Indexed content can appear outside the app to anyone holding the phone, even when the app itself is locked or protected by biometry.
+
 ---
 
 ## Reference
