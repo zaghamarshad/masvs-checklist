@@ -258,6 +258,11 @@ These apply based on the threat model, not to every app. A consumer social app a
 **How:** Static: review Core Spotlight, NSUserActivity, and App Intents donations and what title and text each one carries. Dynamic: create sensitive content in the app, lock the device, then search for a word from that content from the home screen and check what is shown before unlocking.
 **If failed:** Low to Medium. Indexed content can appear outside the app to anyone holding the phone, even when the app itself is locked or protected by biometry.
 
+### PRIVACY-10 - A changed privacy choice takes effect
+**Verify:** When the user turns off tracking, revokes a permission in Settings, or opts out inside the app, the related collection stops and the app does not keep collecting in the background under the old choice.
+**How:** Static: review what each opt out and permission check controls in code. Dynamic: grant a permission and use the feature, then revoke it in Settings or opt out in the app, restart the app, and watch through a proxy whether the related calls and uploads stop.
+**If failed:** Medium. A choice that is shown in the app but not honoured in code leaves the user with a privacy setting that does not do what it says.
+
 ---
 
 ## Reference
