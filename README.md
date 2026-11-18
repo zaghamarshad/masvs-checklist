@@ -263,6 +263,11 @@ These apply based on the threat model, not to every app. A consumer social app a
 **How:** Static: review what each opt out and permission check controls in code. Dynamic: grant a permission and use the feature, then revoke it in Settings or opt out in the app, restart the app, and watch through a proxy whether the related calls and uploads stop.
 **If failed:** Medium. A choice that is shown in the app but not honoured in code leaves the user with a privacy setting that does not do what it says.
 
+### PRIVACY-11 - Old data is deleted when it is no longer needed
+**Verify:** Personal data that is no longer needed for the purpose it was collected for is deleted or anonymized on a set schedule, and old backups age out instead of holding deleted data for good.
+**How:** Static: review the retention rules in code and any server jobs that delete old records. Dynamic: create a test record, set its date past the retention limit, run the deletion job or wait for it, and check that the record is gone from the app and not offered back on a new sign in.
+**If failed:** Medium. Data kept past its use stays exposed to breaches, backups, and support access long after the user has any benefit from it, and a deletion promise in the privacy page does not match what the system does.
+
 ---
 
 ## Reference
