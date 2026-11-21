@@ -268,8 +268,13 @@ These apply based on the threat model, not to every app. A consumer social app a
 **How:** Static: review the retention rules in code and any server jobs that delete old records. Dynamic: create a test record, set its date past the retention limit, run the deletion job or wait for it, and check that the record is gone from the app and not offered back on a new sign in.
 **If failed:** Medium. Data kept past its use stays exposed to breaches, backups, and support access long after the user has any benefit from it, and a deletion promise in the privacy page does not match what the system does.
 
----
 
+### PRIVACY-12 - Third party SDKs collect only what is disclosed
+**Verify:** Analytics, crash reporting, and advertising SDKs added to the app collect only the data named in the privacy disclosure, and no SDK sends identifiers or usage data before the user has had the choice the disclosure promises.
+**How:** Static: list every third party SDK in the project and compare its default data collection with the privacy disclosure and the App Store privacy labels. Dynamic: run the app behind a proxy on first launch, before any consent or sign in, and note which SDK endpoints receive data.
+**If failed:** Medium. An SDK collecting more than the disclosure says, or collecting before consent, makes the privacy labels wrong even when the app's own code handles user data with care.
+
+---
 ## Reference
 
 - OWASP MASVS v2 (the source standard for these categories)
