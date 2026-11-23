@@ -274,6 +274,12 @@ These apply based on the threat model, not to every app. A consumer social app a
 **How:** Static: list every third party SDK in the project and compare its default data collection with the privacy disclosure and the App Store privacy labels. Dynamic: run the app behind a proxy on first launch, before any consent or sign in, and note which SDK endpoints receive data.
 **If failed:** Medium. An SDK collecting more than the disclosure says, or collecting before consent, makes the privacy labels wrong even when the app's own code handles user data with care.
 
+
+### PRIVACY-13 - Personal data in backups is protected or excluded
+**Verify:** Files that hold personal data are either encrypted before they can be backed up or marked excluded from iCloud and local backups, so a backup copy does not become a second, weaker place to read the data from.
+**How:** Static: review which files the app writes for personal data and whether the backup exclusion flag is set on them. Dynamic: make a device backup after adding test data, then check whether those files appear in the backup in readable form.
+**If failed:** Medium. Data that is protected in the app but plain in a backup can be read by anyone with access to that backup, without opening the app at all.
+
 ---
 ## Reference
 
